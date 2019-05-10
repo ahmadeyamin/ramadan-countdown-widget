@@ -1,0 +1,566 @@
+<style>
+    #countdownforRamadanWrapper {
+    width: 100% !important;
+    height: auto;
+    display: block;
+    background-color: aliceblue;
+	background-image: url('img/bg.jpg');
+	background-position: center;
+	background-size: cover;
+	color: #fff;
+	background: linear-gradient(215deg, #1c46ca, #0076ff, #7c1cca, #0a23f0, #d000ff);
+	background-size: 1000% 1000%;
+            -webkit-animation: AnimationName 21s ease infinite;
+            -moz-animation: AnimationName 21s ease infinite;
+            -o-animation: AnimationName 21s ease infinite;
+            animation: AnimationName 21s ease infinite;
+            font-family: SolaimanLipi;
+            padding: 5px 10px;
+            border: 1px solid #dddddd;
+        }
+        @-webkit-keyframes AnimationName {
+            0%{background-position:0% 94%}
+            50%{background-position:100% 7%}
+            100%{background-position:0% 94%}
+        }
+        @-moz-keyframes AnimationName {
+            0%{background-position:0% 94%}
+            50%{background-position:100% 7%}
+            100%{background-position:0% 94%}
+        }
+        @-o-keyframes AnimationName {
+            0%{background-position:0% 94%}
+            50%{background-position:100% 7%}
+            100%{background-position:0% 94%}
+        }
+        @keyframes AnimationName {
+            0%{background-position:0% 94%}
+            50%{background-position:100% 7%}
+            100%{background-position:0% 94%}
+        }
+        .expired {
+            font-size: 14px;
+            text-align: center;
+            margin: 10px 0px;
+            padding: 10px;
+            display: block;
+        }
+        #RamadanDayShari {
+            width: 40%;
+            display: block;
+            float: left;
+            text-align: center;
+        }
+        #RamadanDayIfter {
+            width: 40%;
+            display: block;
+            float: right;
+            text-align: center;
+        }
+
+        #RamadanDayFojor {
+            width: 20%;
+            float: left;
+            text-align: center;
+        }
+        #RamadanwillSatrt{
+            text-align: center;
+            padding-top: 10px !important;
+			color:#fff !important;
+        }
+        #RamadanwillSatrt h3 span{
+            margin: 8px 0px;
+            text-shadow: 0px 0px 9px #999;
+			color:#fff !important;
+        }
+		#RamadanwillSatrt h3{
+			color:#fff !important;
+		}
+        *{
+            margin: 0;
+            padding:0;
+            position: relative;
+        }
+        .clearfix:after,
+        .clearfix:before{
+            content: "";
+            clear: both;
+        }
+        .clearfix:after{
+            display: table;
+        }
+        #Ramadantitle{
+            text-align: center;
+            font-size: 22px;
+            padding: 4px 0px 0px 0px;
+			color:#fff;
+        }
+        #Ramadantitle span{
+            padding-bottom: 5px;
+            border-bottom: 1px dashed #fff;
+        }
+        .countdown-container {
+			
+			display: block !important;
+            box-shadow: 12px 6px 17px 0px #afafaf;
+            border-radius: 9px;    
+            border-radius: 9px;
+            overflow: hidden;
+			margin-bottom:20px;
+        }
+        #countdownforRamadanWrapper .days ,#countdownforRamadanWrapper .hours,#countdownforRamadanWrapper .minutes,#countdownforRamadanWrapper .seconds{
+            color:#fff; 
+            text-shadow: 2px 2px 2px rgba(0,0,0,0.4);
+            height: 32px !important;
+            width: 56px !important;
+            padding: 5px 2px !important;
+            display:inline-block;
+            background:blueviolet;
+            text-align: center;
+            margin: 0px 5px;
+            border: 1px solid #afafaf;
+            border-radius: 7px;
+        }
+        #RamadanSatrted{
+            padding: 10px 0px
+        }
+        
+    
+        
+    </style>
+
+    <div class="countdown-container">
+        <div id="countdownforRamadanWrapper">
+            <h2 id="Ramadantitle">
+                <span>
+                    আজকের সাহরীর ও ইফতারে সময় সূচী ভোলা জেলার জন্য 
+            </span>
+            </h2>
+            <div id="countdownforRamadanInfo" class="clearfix">
+    
+            </div>
+            <div id="RamadanwillSatrt" class="clearfix">
+    
+            </div>
+            <div id="RamadanSatrted" class="clearfix">
+                <div id="RamadanDayShari" class="clearfix"></div>
+                <div id="RamadanDayFojor" class="clearfix">
+                </div>
+                <div id="RamadanDayIfter" class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+    <script>
+        let dayof30ramadan = [
+            {
+                "ramadan": 1,
+                "date": "May 07 2019",
+                "day": "Tuesday",
+                "sehriLastTime": "3:54 am",
+                "fazarStartTime": "4:00 am",
+                "iftarTime": "6:31 pm"
+            },
+            {
+                "ramadan": 2,
+                "date": "May 08 2019",
+                "day": "Wednesday",
+                "sehriLastTime": "3:53 am",
+                "fazarStartTime": "3:59 am",
+                "iftarTime": "6:31 pm"
+            },
+            {
+                "ramadan": 3,
+                "date": "May 09 2019",
+                "day": "Thursday",
+                "sehriLastTime": "3:52 am",
+                "fazarStartTime": "3:58 am",
+                "iftarTime": "6:32 pm"
+            },
+            {
+                "ramadan": 4,
+                "date": "May 10 2019",
+                "day": "Friday",
+                "sehriLastTime": "3:52 am",
+                "fazarStartTime": "3:58 am",
+                "iftarTime": "6:32 pm"
+            },
+            {
+                "ramadan": 5,
+                "date": "May 11 2019",
+                "day": "Saturday",
+                "sehriLastTime": "3:51 am",
+                "fazarStartTime": "3:57 am",
+                "iftarTime": "6:33 pm"
+            },
+            {
+                "ramadan": 6,
+                "date": "May 12 2019",
+                "day": "Sunday",
+                "sehriLastTime": "3:51 am",
+                "fazarStartTime": "3:57 am",
+                "iftarTime": "6:33 pm"
+            },
+            {
+                "ramadan": 7,
+                "date": "May 13 2019",
+                "day": "Monday",
+                "sehriLastTime": "3:50 am",
+                "fazarStartTime": "3:56 am",
+                "iftarTime": "6:33 pm"
+            },
+            {
+                "ramadan": 8,
+                "date": "May 14 2019",
+                "day": "Tuesday",
+                "sehriLastTime": "3:50 am",
+                "fazarStartTime": "3:56 am",
+                "iftarTime": "6:34 pm"
+            },
+            {
+                "ramadan": 9,
+                "date": "May 15 2019",
+                "day": "Wednesday",
+                "sehriLastTime": "3:49 am",
+                "fazarStartTime": "3:55 am",
+                "iftarTime": "6:34 pm"
+            },
+            {
+                "ramadan": 10,
+                "date": "May 16 2019",
+                "day": "Thursday",
+                "sehriLastTime": "3:49 am",
+                "fazarStartTime": "3:55 am",
+                "iftarTime": "6:35 pm"
+            },
+            {
+                "ramadan": 11,
+                "date": "May 17 2019",
+                "day": "Friday",
+                "sehriLastTime": "3:48 am",
+                "fazarStartTime": "3:54 am",
+                "iftarTime": "6:35 pm"
+            },
+            {
+                "ramadan": 12,
+                "date": "May 18 2019",
+                "day": "Saturday",
+                "sehriLastTime": "3:48 am",
+                "fazarStartTime": "3:54 am",
+                "iftarTime": "6:36 pm"
+            },
+            {
+                "ramadan": 13,
+                "date": "May 19 2019",
+                "day": "Sunday",
+                "sehriLastTime": "3:47 am",
+                "fazarStartTime": "3:53 am",
+                "iftarTime": "6:36 pm"
+            },
+            {
+                "ramadan": 14,
+                "date": "May 20 2019",
+                "day": "Monday",
+                "sehriLastTime": "3:46 am",
+                "fazarStartTime": "3:52 am",
+                "iftarTime": "6:37 pm"
+            },
+            {
+                "ramadan": 15,
+                "date": "May 21 2019",
+                "day": "Tuesday",
+                "sehriLastTime": "3:46 am",
+                "fazarStartTime": "3:52 am",
+                "iftarTime": "6:37 pm"
+            },
+            {
+                "ramadan": 16,
+                "date": "May 22 2019",
+                "day": "Wednesday",
+                "sehriLastTime": "3:45 am",
+                "fazarStartTime": "3:51 am",
+                "iftarTime": "6:38 pm"
+            },
+            {
+                "ramadan": 17,
+                "date": "May 23 2019",
+                "day": "Thursday",
+                "sehriLastTime": "3:45 am",
+                "fazarStartTime": "3:51 am",
+                "iftarTime": "6:39 pm"
+            },
+            {
+                "ramadan": 18,
+                "date": "May 24 2019",
+                "day": "Friday",
+                "sehriLastTime": "3:44 am",
+                "fazarStartTime": "3:50 am",
+                "iftarTime": "6:39 pm"
+            },
+            {
+                "ramadan": 19,
+                "date": "May 25 2019",
+                "day": "Saturday",
+                "sehriLastTime": "3:44 am",
+                "fazarStartTime": "3:50 am",
+                "iftarTime": "6:39 pm"
+            },
+            {
+                "ramadan": 20,
+                "date": "May 26 2019",
+                "day": "Sunday",
+                "sehriLastTime": "3:43 am",
+                "fazarStartTime": "3:49 am",
+                "iftarTime": "6:40 pm"
+            },
+            {
+                "ramadan": 21,
+                "date": "May 27 2019",
+                "day": "Monday",
+                "sehriLastTime": "3:43 am",
+                "fazarStartTime": "3:49 am",
+                "iftarTime": "6:40 pm"
+            },
+            {
+                "ramadan": 22,
+                "date": "May 28 2019",
+                "day": "Tuesday",
+                "sehriLastTime": "3:42 am",
+                "fazarStartTime": "3:48 am",
+                "iftarTime": "6:41 pm"
+            },
+            {
+                "ramadan": 23,
+                "date": "May 29 2019",
+                "day": "Wednesday",
+                "sehriLastTime": "3:42 am",
+                "fazarStartTime": "3:48 am",
+                "iftarTime": "6:41 pm"
+            },
+            {
+                "ramadan": 24,
+                "date": "May 30 2019",
+                "day": "Thursday",
+                "sehriLastTime": "3:42 am",
+                "fazarStartTime": "3:48 am",
+                "iftarTime": "6:42 pm"
+            },
+            {
+                "ramadan": 25,
+                "date": "May 31 2019",
+                "day": "Friday",
+                "sehriLastTime": "3:41 am",
+                "fazarStartTime": "3:47 am",
+                "iftarTime": "6:42 pm"
+            },
+            {
+                "ramadan": 26,
+                "date": "June 01 2019",
+                "day": "Saturday",
+                "sehriLastTime": "3:41 am",
+                "fazarStartTime": "3:47 am",
+                "iftarTime": "6:43 pm"
+            },
+            {
+                "ramadan": 27,
+                "date": "June 02 2019",
+                "day": "Sunday",
+                "sehriLastTime": "3:41 am",
+                "fazarStartTime": "3:47 am",
+                "iftarTime": "6:43 pm"
+            },
+            {
+                "ramadan": 28,
+                "date": "June 03 2019",
+                "day": "Monday",
+                "sehriLastTime": "3:41 am",
+                "fazarStartTime": "3:47 am",
+                "iftarTime": "6:43 pm"
+            },
+            {
+                "ramadan": 29,
+                "date": "June 04 2019",
+                "day": "Tuesday",
+                "sehriLastTime": "3:41 am",
+                "fazarStartTime": "3:47 am",
+                "iftarTime": "6:44 pm"
+            },
+            {
+                "ramadan": 30,
+                "date": "June 05 2019",
+                "day": "Wednesday",
+                "sehriLastTime": "3:41 am",
+                "fazarStartTime": "3:47 am",
+                "iftarTime": "6:44 pm"
+            }
+        ];
+
+        function defineBangla(val) {
+            var EnlishToBanglaNumber = {
+                '0': '০',
+                '1': '১',
+                '2': '২',
+                '3': '৩',
+                '4': '৪',
+                '5': '৫',
+                '6': '৬',
+                '7': '৭',
+                '8': '৮',
+                '9': '৯'
+            };
+            String.prototype.getDigitBanglaFromEnglish = function () {
+                var retStr = this;
+                for (var x in EnlishToBanglaNumber) {
+                    retStr = retStr.replace(new RegExp(x, 'g'), EnlishToBanglaNumber[x]);
+                }
+                return retStr;
+            };
+            var english_number = '' + val;
+            var bangla_converted_number = english_number.getDigitBanglaFromEnglish();
+            return bangla_converted_number;
+            // console.log(bangla_converted_number); //or alert(bangla_converted_number);
+        }
+        
+
+         function searchThisInListDay() {
+            for (var i = 0; i < dayof30ramadan.length; i++) {
+                if (new Date().toDateString().slice(4).toLocaleLowerCase() == dayof30ramadan[i].date
+                    .toLocaleLowerCase()) {
+                    console.log(dayof30ramadan[i]);
+                }
+            }
+        }
+
+        let thisDay = new Date();
+
+
+
+
+
+        var StartDayOfRamadn = new Date(dayof30ramadan[0].date).getTime();
+
+        if (new Date(dayof30ramadan[dayof30ramadan.length - 1].date) < thisDay) {
+            console.log('Ramadan 2019 Ended  please update for next year');
+            document.getElementById('countdownforRamadanWrapper').style.display = 'none';
+        } else if (new Date(dayof30ramadan[0].date) < thisDay) {
+
+
+            window.thisDayOfRamadn = '';
+            //Today Time 
+            for (var i = 0; i < dayof30ramadan.length; i++) {
+                if (thisDay.toDateString().slice(4).toLocaleLowerCase() == dayof30ramadan[i].date
+                    .toLocaleLowerCase()) {
+                        thisDayOfRamadn = dayof30ramadan[i];
+                }
+            }
+
+
+            var daySahri = function () {
+
+                var now = new Date().getTime();
+
+                var distance = new Date(`${thisDayOfRamadn.date} ${thisDayOfRamadn.sehriLastTime}`).getTime() - now;
+
+                var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+
+                // Output the result in an element with id="demo"
+                document.getElementById("RamadanDayShari").innerHTML =
+                    "<h3>সাহরীর বাকি আছে</h3><span class='days time'>" + defineBangla(days) + " দিন " +
+                    "</span><span class='hours time'>" + defineBangla(hours) + " ঘ: " +
+                    "</span><span class='minutes time'>" + defineBangla(minutes) + "মি: " +
+                    "</span><span class='seconds time'>" + defineBangla(seconds) + "সে: " + "</span>"+ "</span><br/><br/>" +
+                "<span>সাহরীর শেষ "+ defineBangla(thisDayOfRamadn.sehriLastTime.slice(0, 4))+" টা</span>";
+
+                // If the count down is over, write some text
+                if (distance < 0) {
+                    clearInterval(daySahri);
+                    document.getElementById("RamadanDayShari").innerHTML =
+                        `<span class='expired'> ${thisDayOfRamadn.date}  সাহরীর শেষ সময় ${thisDayOfRamadn.sehriLastTime}</span>`;
+                }
+            }
+            daySahri();
+            setInterval(daySahri, 1000);
+
+
+
+            document.getElementById("RamadanDayFojor").innerHTML =`
+                <h3>আজ ফজরের ওয়াক্ত শুরু ভোর ${defineBangla(thisDayOfRamadn.fazarStartTime.slice(0, 4))} টা</h3>`;
+
+
+            // Code for Ifter Time
+
+            var dayIfter = function () {
+
+            var now = new Date().getTime();
+
+            var distance = new Date(`${thisDayOfRamadn.date} ${thisDayOfRamadn.iftarTime}`).getTime() - now;
+
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+
+            // Output the result in an element with id="demo"
+            document.getElementById("RamadanDayIfter").innerHTML =
+                "<h3>ইফতারে বাকি আছে</h3><span class='days time'>" + defineBangla(days) + " দিন " +
+                "</span><span class='hours time'>" + defineBangla(hours) + " ঘ: " +
+                "</span><span class='minutes time'>" + defineBangla(minutes) + "মি: " +
+                "</span><span class='seconds time'>" + defineBangla(seconds) + "সে: " + "</span><br/><br/>" +
+                "<span>ইফতারে শুরু "+ defineBangla(thisDayOfRamadn.iftarTime.slice(0, 4))+" টা</span>";
+
+            // If the count down is over, write some text
+            if (distance < 0) {
+                clearInterval(dayIfter);
+                document.getElementById("RamadanDayIfter").innerHTML =
+                    `<span class='expired'> ${thisDayOfRamadn.date}  ইফতারে সময় ${thisDayOfRamadn.iftarTime} থেকে</span>`;
+            }
+            }
+            dayIfter();
+            setInterval(dayIfter, 1000);
+
+        } else if (new Date(dayof30ramadan[0].date) > thisDay) {
+
+            //Ramadan Will Start Date 
+            var x = function () {
+
+                var now = new Date().getTime();
+
+                var distance = StartDayOfRamadn - now;
+
+                var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+
+                // Output the result in an element with id="demo"
+                document.getElementById("RamadanwillSatrt").innerHTML =
+                    "<h3>রমজানের আর বাকি আছে </h3> <span class='days time'>" + defineBangla(days) + " দিন " +
+                    "</span><span class='hours time'>" + defineBangla(hours) + " ঘ: " +
+                    "</span><span class='minutes time'>" + defineBangla(minutes) + "মি: " +
+                    "</span><span class='seconds time'>" + defineBangla(seconds) + "সে: " + "</span>";
+
+                // If the count down is over, write some text
+                if (distance < 0) {
+                    clearInterval(x);
+                   window.location.reload();
+                }
+            }
+            x();
+            setInterval(x, 1000);
+
+
+
+        } else {
+
+        }
+
+       
+
+
+
+    </script>
